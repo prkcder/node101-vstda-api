@@ -40,7 +40,8 @@ app.get("/api/Todoitems", (req, res, next) => {
 app.get("/api/TodoItems/:number", (req, res, next) => {
     let todoItemId = req.params.number;
     res.status(200).send(api[todoItemId]);
-    console.log("specific number ID");
+    // console.log("specific number ID");
+    // console.log(todoItemId);
 });
 
 app.post("/api/TodoItems", (req, res, next) => {
@@ -57,10 +58,10 @@ app.post("/api/TodoItems", (req, res, next) => {
     //     completed: "new_completed"
     // }
     
-        let newObj = {
+    let newObj = {
         todoItemId: 0,
         name: 'Greg',
-        priority: 0,
+        priority: 2,
         completed: true
     };
     // for (var i=0; i < api.length; i++){
@@ -74,30 +75,31 @@ app.post("/api/TodoItems", (req, res, next) => {
     api.push(newObj);
     return res.status(201).send(newObj);
 });
-/*
-app.post("/api/TodoItems/", (req, res) => {
-    let newObj = {
-        todoItemId: 3,
-        name: 'Greg',
-        priority: 1,
-        completed: true
-    }
+
+// app.post("/api/TodoItems/", (req, res) => {
+//     let newObj = {
+//         todoItemId: 3,
+//         name: 'Greg',
+//         priority: 1,
+//         completed: true
+//     }
   
-    for (let i = 0; i < api.length; i++) {
-      if (api[i]["todoItemId"] == newObj["todoItemId"]) {
-        api[i] = newObj;
-        return res.status(201).send(newObj);
-      }
-    }
+//     for (let i = 0; i < api.length; i++) {
+//       if (api[i]["todoItemId"] == newObj["todoItemId"]) {
+//         api[i] = newObj;
+//         return res.status(201).send(newObj);
+//       }
+//     }
     
-    api.push(newObj);
-    return res.status(201).send(newObj);
-  });
-  */
+//     api.push(newObj);
+//     return res.status(201).send(newObj);
+//   });
+  
 
 app.delete("/api/TodoItems/:number", (req, res, next) => {
     let deleted = req.params.number;
     res.status(200).send(api[deleted]);
+    // console.log(deleted);
 });
 
 module.exports = app;
